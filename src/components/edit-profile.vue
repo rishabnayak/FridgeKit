@@ -44,7 +44,7 @@
             <input type="text" class="form-control" id="number" v-model="number">
           </div>
           <div class="col-md-4 mb-3">
-            <label for="econtact">Emergency Contact</label>
+            <label for="econtact">Emergency Contact Number</label>
             <input type="text" class="form-control" id="econtact" v-model="econtact">
           </div>
         </div>
