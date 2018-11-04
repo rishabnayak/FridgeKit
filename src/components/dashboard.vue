@@ -10,9 +10,9 @@
       </div>
     </div>
     <div class="row text-center">
-      <div class="col-sm">
+      <!-- <div class="col-sm">
         <button class="btn btn-primary btn-lg" @click="visualize()">Visualize Calorie Intake</button>
-      </div>
+      </div> -->
       <div class="col-sm">
         <button class="btn btn-primary btn-lg" @click="openInventory()">Fridge Inventory</button>
       </div>

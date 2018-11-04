@@ -78,7 +78,8 @@ export default {
       var context = this.canvas.getContext('2d');
       let _this = this
 
-      context.drawImage(_this.video, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT, 0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      var out = context.drawImage(_this.video, 0, 0);
+      console.log(out);
       var dataURI = this.canvas.toDataURL("image/png")
       var data = dataURI.split(',')
       app.models.predict(Clarifai.FOOD_MODEL, {

@@ -2,6 +2,9 @@
 <main role="main">
     <section class="jumbotron text-center">
         <div class="container">
+            <img class="img-fluid width: 100%; height: auto;" src="@/assets/fridgekit-full.png" />
+            <br>
+            <br>
             <h3 class="text-muted">Make Your Fridge a Smart Fridge with FridgeKit</h3>
             <br>
             <br>

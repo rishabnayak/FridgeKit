@@ -1,17 +1,30 @@
 <template>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-      <h5 class="my-0 mr-md-auto font-weight-normal"><router-link to="/">FridgeKit</router-link></h5>
-      </a>
-      <nav class="my-2 my-md-0 mr-md-3">
-        <a class="p-2 text-dark"><router-link to="/">Home</router-link><span class="sr-only">(current)</span></a>
-        <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: dashlink()}">Dashboard</router-link></a>
-        <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: invlink()}">Inventory</router-link></a>
-        <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: caloriecounter()}">Calorie Counter</router-link></a>
-        <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: profilelink()}">Profile</router-link></a>
-      </nav>
-      <a v-if="user" class="nav-link btn btn-outline" @click="signOut()">Logout</a>
-      <a v-else class="nav-link btn btn-outline" @click="login()">Login</a>
-    </div>
+<header class="navbar navbar-expand bd-navbar d-flex flex-column flex-md-row bg-white border-bottom shadow-sm">
+  <a class="navbar-brand my-0 mr-md-auto" href="/"><img class="d-block" width="181.3" height="72.4" src="@/assets/fridgekit-full.png" />
+    <!-- <h5 class="my-0 mr-md-auto font-weight-normal"><router-link to="/">FridgeKit</router-link></h5> -->
+  </a>
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav bd-navbar-nav flex-row">
+      <li class="nav-item">
+        <router-link to="/" class="nav-link">Home</router-link><span class="sr-only">(current)</span>
+      </li>
+      <li v-if="user" class="nav-item">
+        <router-link :to="{ path: dashlink()}" class="nav-link">Dashboard</router-link>
+      </li>
+      <li v-if="user" class="nav-item">
+        <router-link :to="{ path: invlink()}" class="nav-link">Inventory</router-link>
+      </li>
+      <li v-if="user" class="nav-item">
+        <router-link :to="{ path: caloriecounter()}" class="nav-link">Calorie Counter</router-link>
+      </li>
+      <li v-if="user" class="nav-item">
+        <router-link :to="{ path: profilelink()}" class="nav-link">Profile</router-link>
+      </li>
+    </ul>
+  </div>
+  <a v-if="user" class="nav-link btn btn-outline" @click="signOut()">Logout</a>
+  <a v-else class="nav-link btn btn-outline" @click="login()">Login</a>
+</header>
 </template>
 
 <script>
@@ -19,35 +32,34 @@ import firebase from 'firebase'
 import db from '@/firebase/init.js'
 export default {
   name: 'navigation',
-  computed:{
-    user () {
+  computed: {
+    user() {
       return this.$store.state.user
     }
   },
   methods: {
-    async signOut () {
+    async signOut() {
       await this.$store.dispatch('logOut')
       this.$router.push('/')
     },
-    profilelink: function(){
-      return "/profile/"+ this.user.uname
+    profilelink: function() {
+      return "/profile/" + this.user.uname
     },
-    dashlink: function(){
+    dashlink: function() {
       return "/dashboard"
     },
-    invlink: function(){
+    invlink: function() {
       return "/inventory"
     },
-    caloriecounter: function(){
+    caloriecounter: function() {
       return "/caloriecounter"
     },
     async login() {
       this.$router.push('/login')
     }
   },
-  data () {
-    return {
-    }
+  data() {
+    return {}
   }
 }
 </script>
