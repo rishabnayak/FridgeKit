@@ -9,6 +9,7 @@ import profile from '@/components/profile'
 import home from '@/components/home'
 import dashboard from '@/components/dashboard'
 import caloriecounter from '@/components/caloriecounter'
+import inventory from '@/components/inventory'
 
 Vue.use(Router)
 
@@ -24,6 +25,14 @@ const router = new Router({
       path: '/editprofile',
       name: 'editprofile',
       component: editprofile,
+      meta:{
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/inventory',
+      name: 'inventory',
+      component: inventory,
       meta:{
         requiresAuth: true
       }

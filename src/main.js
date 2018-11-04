@@ -5,8 +5,10 @@ import App from './App'
 import router from './router'
 import store from './store/store.js'
 import firebase from 'firebase'
+import VueMasonry from 'vue-masonry-css'
 
 Vue.config.productionTip = false
+Vue.use(VueMasonry)
 
 /* eslint-disable no-new */
 var app = null
