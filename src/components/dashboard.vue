@@ -4,8 +4,8 @@
     <div class="row">
       <div class="col-sm">
         <div class="jumbotron text-center">
-          <p class="text-muted">Wd1</p>
-          {{wd1}}
+          <p class="text-muted">Your Total Calorie Consumption Today</p>
+          {{cal}}
         </div>
       </div>
       <div class="col-sm">
@@ -67,7 +67,8 @@ export default {
       wd3: null,
       split: null,
       fall: null,
-      econtact: null
+      econtact: null,
+      cal:null
     }
   },
   methods: {
@@ -104,17 +105,12 @@ export default {
         });
     }
   },
-  mounted() {
+  async mounted() {
+    var todayTime = new Date();
+    var date = ("0" + (todayTime.getMonth() + 1).toString()).substr(-2) + ("0" + todayTime.getDate().toString()).substr(-2) + (todayTime.getFullYear().toString()).substr(2)
+    let ref = await db.collection('users').doc(this.user.uid).get()
+    this.cal = Math.round(Number((Object.values(ref.data().CalInt))));
     this.getFeedin()
-    this.econtact = this.user.econtact
-    axios.post('https://io.adafruit.com/api/v2/Stepify/feeds/econtact/data', {
-      "value": this.user.econtact
-    }, {
-      headers: {
-        'X-AIO-Key': '3a5f9b06eb9047d1a7007d45367a887d',
-        'Content-Type': 'application/json'
-      }
-    })
   }
 }
 </script>

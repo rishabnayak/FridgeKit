@@ -6,6 +6,7 @@
         <a class="p-2 text-dark"><router-link to="/">Home</router-link><span class="sr-only">(current)</span></a>
         <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: profilelink()}">Profile</router-link></a>
         <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: dashlink()}">Dashboard</router-link></a>
+        <a v-if="user" class="p-2 text-dark"><router-link :to="{ path: caloriecounter()}">Calorie Counter</router-link></a>
       </nav>
       <a v-if="user" class="nav-link btn btn-outline" @click="signOut()">Logout</a>
       <a v-else class="nav-link btn btn-outline" @click="login()">Login</a>
@@ -32,6 +33,9 @@ export default {
     },
     dashlink: function(){
       return "/dashboard"
+    },
+    caloriecounter: function(){
+      return "/caloriecounter"
     },
     async login() {
       this.$router.push('/login')

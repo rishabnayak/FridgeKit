@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "clarifai": "^2.9.0",
     "firebase": "^5.5.7",
     "firebaseui": "^3.4.1",
     "register-service-worker": "^1.0.0",
